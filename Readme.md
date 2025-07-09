@@ -91,13 +91,14 @@ clang -std=c99 -O2 -o blackwhite2 main.c io.c util.c
 
 ## UI 예시 (레퍼런스)
 
-![Frame 1](https://github.com/user-attachments/assets/89fba190-f298-4fb8-9ba1-9b997b476f43)
+![Frame 1](https://github.com/user-attachments/assets/89fba190-f298-4fb8-9ba1-9b997b476f43)  
 ![Frame 1 (3)](https://github.com/user-attachments/assets/865e724b-4cfe-40cc-b0f2-e1a3505014e9)
 
 ---
 
 ## 📂 프로젝트 구조
 
+```text
 c-project/
 ├── .vscode/        # VSCode 설정 파일
 ├── .gitignore      # Git 버전 관리 제외 목록
@@ -107,7 +108,7 @@ c-project/
 ├── util.h          # 유틸리티 함수 선언
 ├── util.c          # 유틸리티 함수 구현
 └── main.c          # 프로그램 진입점 및 전체 흐름
-
+```
 ---
 
 ## 💡 향후 개선 방향
