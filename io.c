@@ -1,9 +1,7 @@
 #include "io.h"
 #include <stdio.h>
 
-const char* changeNum(int num) {
-    return (0 <= num && num <= 9) ? "Black" : "White";
-}
+
 
 void wait_for_enter(char player) {
     printf("==================================\n");

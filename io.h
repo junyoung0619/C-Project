@@ -3,8 +3,7 @@
 
 #include "util.h"
 
-// 흑(0~9) / 백(>9) 문자열 반환
-const char* changeNum(int num);
+
 
 // 플레이어 차례 알림 + 엔터 대기
 void wait_for_enter(char player);
