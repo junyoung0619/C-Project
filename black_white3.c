@@ -5,6 +5,11 @@
 #define MAX_POINT 99
 #define MAX_ROUND 9
 #define WINNING_SCORE 5
+#define FLUSH_INPUT()          \
+    do {                       \
+        int _c;                \
+        while ((_c = getchar()) != '\n' && _c != EOF) {} \
+    } while (0)
 
 // 포인트 구간을 문자열로 반환
 const char* get_range_str(int point) {
@@ -27,7 +32,6 @@ void wait_for_enter(char player) {
     printf("상대는 화면을 보지 말아 주세요!\n");
     printf(">> [엔터]를 누르면 입력 화면이 나옵니다.\n");
     printf("==================================\n");
-    fflush(stdout);
 
     getchar();      // 딱 한 번만 엔터 대기
     clear_screen();
@@ -42,15 +46,15 @@ char* changeNum(int num){
 }
 
 // 플레이어 입력 처리
-int player_turn(char player, int my_point, int opponent_point, int lastpoint) {
+int player_turn(char player, int my_point, int opponent_point, int last_point) {
     int input;
     int ret = 0;
 
     wait_for_enter(player);
 
     printf("=== Player %c 입력 화면 ===\n", player);
-    if(lastpoint!=-1){
-        printf("이번 턴에 상대가 제시한 포인트는 %s입니다.\n", changeNum(lastpoint));
+    if(last_point != -1){
+        printf("이번 턴에 상대가 제시한 포인트는 %s입니다.\n", changeNum(last_point));
     }
     printf("당신의 잔여 포인트: %d\n", my_point);
     printf("상대 포인트 구간: %s\n", get_range_str(opponent_point));
@@ -64,9 +68,11 @@ int player_turn(char player, int my_point, int opponent_point, int lastpoint) {
         if (!fgets(buf, sizeof(buf), stdin)) continue;  // EOF 방어
 
         if (sscanf(buf, "%d%n", &val, &n) != 1) {
+            FLUSH_INPUT();
             printf("0 ~ %d 사이의 정수를 입력하세요 \n\n", my_point);
             continue;
         } else if(buf[n] != '\n'){
+            FLUSH_INPUT();
             printf("포인트는 1포인트 단위로 사용할 수 있습니다.\n\n");
             continue;
         }
@@ -91,8 +97,8 @@ int main() {
     int a = 0, b = 0;
     char currentFirst;
 
-    srand(time(NULL));
-    currentFirst = (rand() % 2 == 0) ? 'A' : 'B';
+    time_t t = time(NULL);
+    currentFirst = (t % 2 == 0) ? 'A' : 'B';
     printf("==== 흑과 백 2 콘솔 시뮬레이터 ====\n");
     printf("첫 번째 라운드 선플레이어는 Player %c\n", currentFirst);
 
@@ -101,10 +107,10 @@ int main() {
 
         // 턴 진행
         if (currentFirst == 'A') {
-            a = player_turn('A', pointA, pointB,-1);
+            a = player_turn('A', pointA, pointB, -1);
             pointA -= a;
 
-            b = player_turn('B', pointB, pointA,a);
+            b = player_turn('B', pointB, pointA, a);
             pointB -= b;
         } else {
             b = player_turn('B', pointB, pointA,-1);
