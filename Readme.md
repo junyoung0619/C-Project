@@ -66,8 +66,11 @@ clang -std=c99 -O2 -o blackwhite3 main.c
 * 라운드 승리 시 **선플레이어** 권한이 이동
 
 ## UI 예시 (레퍼런스)
-![image](https://github.com/user-attachments/assets/5d8756fe-0a5b-4455-bac7-cf1b1b3d4169)
-![image](https://github.com/user-attachments/assets/59f9f573-f384-46bc-ba70-e620ef6bab04)
+
+![Frame 1](https://github.com/user-attachments/assets/89fba190-f298-4fb8-9ba1-9b997b476f43)
+![Frame 1 (3)](https://github.com/user-attachments/assets/865e724b-4cfe-40cc-b0f2-e1a3505014e9)
+
+
 
 
 ## 📂 프로젝트 구조
