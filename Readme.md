@@ -1,30 +1,42 @@
-# 흑과 백 2 콘솔 시뮬레이터
-## 팀원 
+# 흑과 백 2
+## 팀명
+배이가 3성
 
-| <img alt="배나연 프로필" src="https://github.com/baenavly.png" width="150px"> | <img alt="이준영 프로필" src="https://github.com/junyoung0619.png" width="150px"> |
-| :----------------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| **배나연**                                                                          | **이준영**                                                                  |
-|             [baenavly](https://github.com/baenavly)                   | [junyoung0619](https://github.com/junyoung0619)                                          |
+## 팀원
+
+| <img alt="배나연 프로필" src="https://github.com/baenavly.png" width="120"> | <img alt="이준영 프로필" src="https://github.com/junyoung0619.png" width="120"> |
+|:---------------------------------------------------------------------:|:-----------------------------------------------------------------------:|
+| **배나연**<br>[baenavly](https://github.com/baenavly)                | **이준영**<br>[junyoung0619](https://github.com/junyoung0619)         |
+
+---
 
 ## 📄 프로젝트 개요
 
-본 프로젝트는 《더 지니어스: 그랜드 파이널》의 〈흑과 백 2〉 데스매치를 콘솔 기반 C언어 게임으로 재현한 것입니다.
-두 명의 플레이어가 9라운드 동안 99포인트를 전략적으로 배팅해 승부를 가리며, 선취 5점을 달성한 플레이어가 즉시 최종 승리합니다.
+본 프로젝트는 《더 지니어스: 그랜드 파이널》의 **〈흑과 백 2〉** 데스매치를  
+콘솔 기반 C언어 게임으로 재현한 것입니다.  
+두 명의 플레이어가 **9라운드** 동안 **99포인트**를 전략적으로 배팅해 승부를 가리며,  
+**선취 5점**을 달성한 플레이어가 즉시 최종 승리합니다.
 
-## 🛠️ 개발 환경 및 요구사항
+---
 
-* C 컴파일러 (GCC, Clang, MSVC 등)
-* 표준 C 라이브러리 (stdio.h, stdlib.h)
-* 운영체제: Windows / Linux / macOS (터미널 지원)
+## 🛠 개발 환경 및 요구사항
+
+- **언어**: C99  
+- **컴파일러**: GCC, Clang, MSVC 등  
+- **라이브러리**: `<stdio.h>`, `<stdlib.h>`  
+- **플랫폼**: Windows, Linux, macOS (터미널/콘솔 지원)
+
+---
 
 ## 💻 설치 및 컴파일
 
 ```bash
 # GCC 사용 예
-gcc -std=c99 -O2 -o blackwhite3 main.c
+gcc -std=c99 -O2 -o blackwhite2 main.c io.c util.c
 
 # Clang 사용 예
-clang -std=c99 -O2 -o blackwhite3 main.c
+clang -std=c99 -O2 -o blackwhite2 main.c io.c util.c
+
 ```
 
 ## 🚀 실행 방법
