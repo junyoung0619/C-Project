@@ -22,31 +22,9 @@
 ## 🛠 개발 환경 및 요구사항
 
 - **언어**: C99  
-- **컴파일러**: GCC, Clang, MSVC 등  
-- **라이브러리**: `<stdio.h>`, `<stdlib.h>`  
+- **컴파일러**: GCC 등  
+- **라이브러리**: `<stdio.h>`, `<stdlib.h>`, `<time.h>` 
 - **플랫폼**: Windows, Linux, macOS (터미널/콘솔 지원)
-
----
-
-## 💻 설치 및 컴파일
-
-```bash
-# GCC 사용 예
-gcc -std=c99 -O2 -o blackwhite2 main.c io.c util.c
-
-# Clang 사용 예
-clang -std=c99 -O2 -o blackwhite2 main.c io.c util.c
-
-```
-
----
-
-## 🚀 실행 방법
-
-```bash
-# 컴파일 후 생성된 실행 파일 실행
-./blackwhite3
-```
 
 ---
 
