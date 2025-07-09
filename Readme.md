@@ -68,6 +68,8 @@ clang -std=c99 -O2 -o blackwhite3 main.c
 ## UI 예시 (레퍼런스)
 ![image](https://github.com/user-attachments/assets/5d8756fe-0a5b-4455-bac7-cf1b1b3d4169)
 ![image](https://github.com/user-attachments/assets/d20e23f2-67ed-48ba-b8fb-75e660089c99)
+![image](https://github.com/user-attachments/assets/59f9f573-f384-46bc-ba70-e620ef6bab04)
+
 
 ## 📂 프로젝트 구조
 
