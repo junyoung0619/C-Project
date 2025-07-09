@@ -27,24 +27,62 @@ void wait_for_enter(char player) {
     printf("상대는 화면을 보지 말아 주세요!\n");
     printf(">> [엔터]를 누르면 입력 화면이 나옵니다.\n");
     printf("==================================\n");
-    getchar(); // 버퍼 비우기
-    getchar(); // 실제 대기
+    fflush(stdout);
+
+    getchar();      // 딱 한 번만 엔터 대기
+    clear_screen();
+}
+
+char* changeNum(int num){
+    if(0<=num && num<=9){
+        return "Black";
+    }
+
+    return "White";
 }
 
 // 플레이어 입력 처리
-int player_turn(char player, int my_point, int opponent_point) {
+int player_turn(char player, int my_point, int opponent_point, int lastpoint) {
     int input;
+    int ret = 0;
+
     wait_for_enter(player);
+
     printf("=== Player %c 입력 화면 ===\n", player);
+    if(lastpoint!=-1){
+        printf("이번 턴에 상대가 제시한 포인트는 %s입니다.\n", changeNum(lastpoint));
+    }
     printf("당신의 잔여 포인트: %d\n", my_point);
-    printf("상대는 현재 %s 구간에 있음.\n", get_range_str(opponent_point));
-    do {
-        printf("사용할 숫자를 입력하세요 (0 ~ %d): ", my_point);
-        scanf("%d", &input);
-    } while (input < 0 || input > my_point);
+    printf("상대 포인트 구간: %s\n", get_range_str(opponent_point));
+
+    char buf[32];
+    int val, n;
+
+    while (1) {
+        printf("사용할 포인트를 제시해주세요(0 ~ %d): \n", my_point);
+
+        if (!fgets(buf, sizeof(buf), stdin)) continue;  // EOF 방어
+
+        if (sscanf(buf, "%d%n", &val, &n) != 1) {
+            printf("0 ~ %d 사이의 정수를 입력하세요: \n", my_point);
+            continue;
+        } else if(buf[n] != '\n'){
+            printf("포인트는 1포인트 단위로 사용할 수 있습니다.\n");
+            continue;
+        }
+        if (val < 0 || val > my_point) {
+            printf("0 ~ %d 사이의 정수를 입력하세요: \n", my_point);
+            continue;
+        }
+        input = val;
+        break;
+    }
+
     clear_screen();
     return input;
 }
+
+
 
 int main() {
     int pointA = MAX_POINT, pointB = MAX_POINT;
@@ -60,37 +98,37 @@ int main() {
 
     while (round <= MAX_ROUND) {
         printf("\n=== Round %d ===\n", round);
-        printf("현재 점수: A(%d) - B(%d)\n", scoreA, scoreB);
 
         // 턴 진행
         if (currentFirst == 'A') {
-            a = player_turn('A', pointA, pointB);
+            a = player_turn('A', pointA, pointB,-1);
             pointA -= a;
 
-            b = player_turn('B', pointB, pointA);
+            b = player_turn('B', pointB, pointA,a);
             pointB -= b;
         } else {
-            b = player_turn('B', pointB, pointA);
+            b = player_turn('B', pointB, pointA,-1);
             pointB -= b;
 
-            a = player_turn('A', pointA, pointB);
+            a = player_turn('A', pointA, pointB,b);
             pointA -= a;
         }
 
         // 라운드 결과 출력
         if (a > b) {
             scoreA++;
-            printf("\n>> Player A wins this round! (%d vs %d)\n", a, b);
-            currentFirst = 'B'; // 진 쪽이 선공
+            printf("\n>> Player A wins this round!\n");
+            currentFirst = 'A'; // 이긴 쪽이 선공
         } else if (b > a) {
             scoreB++;
-            printf("\n>> Player B wins this round! (%d vs %d)\n", a, b);
-            currentFirst = 'A';
+            printf("\n>> Player B wins this round! \n");
+            currentFirst = 'B';
         } else {
-            printf("\n>> Draw! (%d vs %d)\n", a, b);
+            printf("\n>> Draw!\n");
             // 무승부면 선플레이어 유지
         }
-
+        
+        printf("A가 제시한 포인트: %s, B가 제시한 포인트: %s\n",changeNum(a),changeNum(b));
         printf("현재 점수: A(%d) - B(%d)\n", scoreA, scoreB);
         round++;
 
