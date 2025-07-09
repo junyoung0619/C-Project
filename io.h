@@ -13,5 +13,7 @@ int player_turn(char player,
                 int my_point,
                 int opponent_point,
                 int last_point);
-
+                
+// 화면 클리어 (단순 개행)
+void clear_screen(void);
 #endif 

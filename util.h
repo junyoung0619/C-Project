@@ -19,7 +19,4 @@ const char* changeNum(int num);
 // 포인트 구간을 문자열로 반환
 const char* get_range_str(int point);
 
-// 화면 클리어 (단순 개행)
-void clear_screen(void);
-
 #endif 

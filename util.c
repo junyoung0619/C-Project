@@ -13,8 +13,4 @@ const char* get_range_str(int point) {
     else return "0~19";
 }
 
-void clear_screen(void) {
-    for (int i = 0; i < 30; i++) {
-        putchar('\n');
-    }
-}
+

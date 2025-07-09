@@ -60,3 +60,8 @@ int player_turn(char player,
     clear_screen();
     return input;
 }
+void clear_screen(void) {
+    for (int i = 0; i < 30; i++) {
+        putchar('\n');
+    }
+}
