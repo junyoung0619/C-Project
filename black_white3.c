@@ -64,14 +64,14 @@ int player_turn(char player, int my_point, int opponent_point, int lastpoint) {
         if (!fgets(buf, sizeof(buf), stdin)) continue;  // EOF 방어
 
         if (sscanf(buf, "%d%n", &val, &n) != 1) {
-            printf("0 ~ %d 사이의 정수를 입력하세요: \n", my_point);
+            printf("0 ~ %d 사이의 정수를 입력하세요 \n\n", my_point);
             continue;
         } else if(buf[n] != '\n'){
-            printf("포인트는 1포인트 단위로 사용할 수 있습니다.\n");
+            printf("포인트는 1포인트 단위로 사용할 수 있습니다.\n\n");
             continue;
         }
         if (val < 0 || val > my_point) {
-            printf("0 ~ %d 사이의 정수를 입력하세요: \n", my_point);
+            printf("0 ~ %d 사이의 정수를 입력하세요 \n\n", my_point);
             continue;
         }
         input = val;
