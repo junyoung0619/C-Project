@@ -75,14 +75,19 @@ clang -std=c99 -O2 -o blackwhite3 main.c
 
 ## 📂 프로젝트 구조
 
-```
-project-root/
-├── main.c        # 게임 로직 및 입출력 처리
-└── README.md     # 프로젝트 설명 및 사용법
-```
+c-project/
+├── .vscode/        # VSCode 설정 파일
+├── .gitignore      # Git 버전 관리 제외 목록
+├── README.md       # 프로젝트 개요 및 사용법
+├── io.h            # 입출력 함수 선언
+├── io.c            # 입출력 함수 구현
+├── util.h          # 유틸리티 함수 선언
+├── util.c          # 유틸리티 함수 구현
+└── main.c          # 프로그램 진입점 및 전체 흐름
 
 ## 💡 향후 개선 방향
 
 * **멀티플레이어 지원**: 네트워크 기반 대전 모드
+* **프론트 연계하여 UI 구현**: 실제 게임처럼 직관적으로 시각화
 
 
