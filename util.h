@@ -1,4 +1,3 @@
-// util.h
 #ifndef UTIL_H
 #define UTIL_H
 
@@ -20,4 +19,4 @@ const char* get_range_str(int point);
 // 화면 클리어 (단순 개행)
 void clear_screen(void);
 
-#endif // UTIL_H
+#endif 

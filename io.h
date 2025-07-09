@@ -1,4 +1,3 @@
-// io.h
 #ifndef IO_H
 #define IO_H
 
@@ -16,4 +15,4 @@ int player_turn(char player,
                 int opponent_point,
                 int last_point);
 
-#endif // IO_H
+#endif 
