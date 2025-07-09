@@ -15,7 +15,7 @@ const char* get_range_str(int point) {
     else return "0~19";
 }
 
-// 스크린 클리어 or 줄 내리기
+// 스크린 클리어
 void clear_screen() {
     for (int i = 0; i < 30; i++) printf("\n");
 }
