@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "io.h"
 #include <stdio.h>
 
@@ -20,7 +21,7 @@ int player_turn(char player,
                 int opponent_point,
                 int last_point) {
     char buf[32];
-    int val, n, input;
+    int input;
 
     wait_for_enter(player);
 
@@ -37,23 +38,36 @@ int player_turn(char player,
 
         if (!fgets(buf, sizeof(buf), stdin))
             continue;  // EOF 방어
+        
+        char *endp;
 
-        if (sscanf(buf, "%d%n", &val, &n) != 1) {
+        long tmp = strtol(buf, &endp, 10);
+
+        // 1) 숫자가 전혀 없었을 때
+        if (endp == buf) {
             FLUSH_INPUT();
             printf("0 ~ %d 사이의 정수를 입력하세요.\n\n", my_point);
             continue;
         }
-        if (buf[n] != '\n') {
+        // 2) 소수점(.)이 나왔을 때
+        if (*endp == '.') {
             FLUSH_INPUT();
             printf("포인트는 1포인트 단위로 입력해야 합니다.\n\n");
             continue;
         }
-        if (val < 0 || val > my_point) {
+        // 3) 숫자 뒤에 영문자·특수문자 등이 올 때
+        if (*endp != '\n' && *endp != '\0') {
+            FLUSH_INPUT();
+            printf("0 ~ %d 사이의 정수를 입력하세요.\n\n", my_point);
+            continue;
+        }
+        // 4) 범위 검사
+        if (tmp < 0 || tmp > my_point) {
             printf("0 ~ %d 사이의 값을 입력하세요.\n\n", my_point);
             continue;
         }
 
-        input = val;
+        input = tmp;
         break;
     }
 
