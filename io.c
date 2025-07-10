@@ -75,7 +75,5 @@ int player_turn(char player,
     return input;
 }
 void clear_screen(void) {
-    for (int i = 0; i < 30; i++) {
-        putchar('\n');
-    }
+    printf("\x1b[2J\x1b[H");
 }
