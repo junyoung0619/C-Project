@@ -45,19 +45,16 @@ int player_turn(char player,
 
         // 1) 숫자가 전혀 없었을 때
         if (endp == buf) {
-            FLUSH_INPUT();
             printf("0 ~ %d 사이의 정수를 입력하세요.\n\n", my_point);
             continue;
         }
         // 2) 소수점(.)이 나왔을 때
         if (*endp == '.') {
-            FLUSH_INPUT();
             printf("포인트는 1포인트 단위로 입력해야 합니다.\n\n");
             continue;
         }
         // 3) 숫자 뒤에 영문자·특수문자 등이 올 때
         if (*endp != '\n' && *endp != '\0') {
-            FLUSH_INPUT();
             printf("0 ~ %d 사이의 정수를 입력하세요.\n\n", my_point);
             continue;
         }
